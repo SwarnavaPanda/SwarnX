@@ -15,15 +15,17 @@ twilio_phone = os.getenv('TWILIO_PHONE')
 whatsapp_phone = os.getenv('WHATSAPP_PHONE')
 
 # Set the path for certificates directory
-CERTIFICATES_DIR = os.path.join(app.root_path, 'Certificate_jpg')
+CERTIFICATES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Certificate_jpg')
 
-# Debug: Print environment variables (remove in production)
-print("Environment Variables Status:")
-print(f"TWILIO_ACCOUNT_SID: {'Set' if account_sid else 'Not Set'}")
-print(f"TWILIO_AUTH_TOKEN: {'Set' if auth_token else 'Not Set'}")
-print(f"TWILIO_PHONE: {'Set' if twilio_phone else 'Not Set'}")
-print(f"WHATSAPP_PHONE: {'Set' if whatsapp_phone else 'Not Set'}")
+# Debug: Print environment variables and paths
+print("\n=== Application Debug Information ===")
+print(f"Current working directory: {os.getcwd()}")
+print(f"Application root path: {os.path.dirname(os.path.abspath(__file__))}")
 print(f"Certificates Directory: {CERTIFICATES_DIR}")
+print(f"Directory exists: {os.path.exists(CERTIFICATES_DIR)}")
+if os.path.exists(CERTIFICATES_DIR):
+    print(f"Files in certificates directory: {os.listdir(CERTIFICATES_DIR)}")
+print("===================================\n")
 
 # Initialize Twilio client
 try:
@@ -51,24 +53,45 @@ def projects():
 
 @app.route('/certificates')
 def certificates():
-    # Get list of certificate images
     try:
+        print("\n=== Loading Certificates ===")
+        print(f"Checking directory: {CERTIFICATES_DIR}")
+        
+        if not os.path.exists(CERTIFICATES_DIR):
+            print(f"Error: Directory {CERTIFICATES_DIR} does not exist")
+            return render_template('certificates.html', certificates=[])
+            
         cert_files = [f for f in os.listdir(CERTIFICATES_DIR) if f.lower().endswith(('.jpg', '.jpeg'))]
+        print(f"Found {len(cert_files)} certificates:")
+        for cert in cert_files:
+            print(f"- {cert}")
+            
+        if not cert_files:
+            print("No certificate files found!")
+            return render_template('certificates.html', certificates=[])
+            
+        print("Rendering template with certificates")
         return render_template('certificates.html', certificates=cert_files)
     except Exception as e:
-        print(f"Error listing certificates: {str(e)}")
+        print(f"Error in certificates route: {str(e)}")
         return render_template('certificates.html', certificates=[])
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route('/certificates/<filename>')
 def view_certificate(filename):
     try:
-        # Check if file exists
+        print(f"\n=== Serving Certificate: {filename} ===")
         file_path = os.path.join(CERTIFICATES_DIR, filename)
+        print(f"Full path: {file_path}")
+        
         if not os.path.exists(file_path):
-            print(f"Certificate file not found: {file_path}")
+            print(f"Error: File not found at {file_path}")
             return "Certificate not found", 404
             
-        # Send the image file
+        print("Sending file...")
         return send_file(file_path, mimetype='image/jpeg')
     except Exception as e:
         print(f"Error serving certificate: {str(e)}")
@@ -119,4 +142,4 @@ def send_message():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port) 
+    app.run(host="0.0.0.0", port=port, debug=True) 
