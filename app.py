@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, render_template, send_from_directory, request, jsonify, send_file
 import os
 from twilio.rest import Client
 from dotenv import load_dotenv
@@ -15,7 +15,7 @@ twilio_phone = os.getenv('TWILIO_PHONE')
 whatsapp_phone = os.getenv('WHATSAPP_PHONE')
 
 # Set the path for certificates directory
-CERTIFICATES_DIR = os.path.join(app.root_path, 'my_certificates')
+CERTIFICATES_DIR = os.path.join(app.root_path, 'Certificate_jpg')
 
 # Debug: Print environment variables (remove in production)
 print("Environment Variables Status:")
@@ -51,7 +51,13 @@ def projects():
 
 @app.route('/certificates')
 def certificates():
-    return render_template('certificates.html')
+    # Get list of certificate images
+    try:
+        cert_files = [f for f in os.listdir(CERTIFICATES_DIR) if f.lower().endswith(('.jpg', '.jpeg'))]
+        return render_template('certificates.html', certificates=cert_files)
+    except Exception as e:
+        print(f"Error listing certificates: {str(e)}")
+        return render_template('certificates.html', certificates=[])
 
 @app.route('/certificates/<filename>')
 def view_certificate(filename):
@@ -62,7 +68,8 @@ def view_certificate(filename):
             print(f"Certificate file not found: {file_path}")
             return "Certificate not found", 404
             
-        return send_from_directory(CERTIFICATES_DIR, filename, as_attachment=True)
+        # Send the image file
+        return send_file(file_path, mimetype='image/jpeg')
     except Exception as e:
         print(f"Error serving certificate: {str(e)}")
         return str(e), 500
