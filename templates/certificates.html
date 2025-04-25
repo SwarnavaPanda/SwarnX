@@ -7,15 +7,19 @@
     <h1>My Certificates</h1>
     <div class="certificates-grid">
         {% for certificate in certificates %}
+        {% if not certificate.startswith(('Psychology', 'Mental Health')) %}
         <div class="certificate-item">
-            <img src="{{ url_for('view_certificate', filename=certificate) }}" 
-                 alt="Certificate" 
-                 class="certificate-image"
-                 onclick="openModal(this)">
+            <div class="certificate-border">
+                <img src="{{ url_for('view_certificate', filename=certificate) }}" 
+                     alt="Certificate" 
+                     class="certificate-image"
+                     onclick="openModal(this)">
+            </div>
             <div class="certificate-overlay">
-                <button class="view-btn" onclick="openModal(this.parentElement.previousElementSibling)">View</button>
+                <button class="view-btn" onclick="openModal(this.parentElement.previousElementSibling.querySelector('img'))">View</button>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
@@ -44,7 +48,6 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -52,11 +55,33 @@
     transform: translateY(-5px);
 }
 
+.certificate-border {
+    position: relative;
+    padding: 4px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background-size: 400%;
+    border-radius: 8px;
+    animation: glowing 20s linear infinite;
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
 .certificate-image {
     width: 100%;
     height: auto;
     display: block;
     cursor: pointer;
+    border-radius: 6px;
 }
 
 .certificate-overlay {
