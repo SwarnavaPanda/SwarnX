@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Swarnava's Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">Swarnava</a>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/projects" class="nav-link">Projects</a>
+            <a href="/certificates" class="nav-link">Certificates</a>
+            <a href="/contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/SwarnavaPanda" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/swarnava-panda-383376249" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://linktr.ee/swarnavapanda" target="_blank" class="social-link"><i class="fas fa-link"></i></a>
+        </div>
+        <div class="contact-info">
+            <p><i class="fas fa-envelope"></i> swarnavapanda@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 6296401279</p>
+        </div>
+        <p>&copy; 2024 Swarnava Panda. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}Certificates{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">My Certifications</h2>
+    
+    <div class="certificates-container">
+        <div class="cert-category">
+            <h3>AI & Machine Learning</h3>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h4>IBM AI Engineer</h4>
+                    <p>Advanced AI concepts and implementation</p>
+                    <a href="{{ url_for('view_certificate', filename='IBM AI ENGINEER.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>IBM ML Engineer</h4>
+                    <p>Machine Learning engineering and deployment</p>
+                    <a href="{{ url_for('view_certificate', filename='IBM ML_ENGINEER.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Coursera Generative AI</h4>
+                    <p>Advanced concepts in Generative AI</p>
+                    <a href="{{ url_for('view_certificate', filename='COURSERA GEN_AI.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>AI for Everyone</h4>
+                    <p>Fundamentals of Artificial Intelligence</p>
+                    <a href="{{ url_for('view_certificate', filename='AI_for_everyone.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <h3>Cloud & Data Analytics</h3>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h4>IBM Data Analytics</h4>
+                    <p>Data analysis and visualization</p>
+                    <a href="{{ url_for('view_certificate', filename='IBM_Data_Analytics.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Coursera Cloud Computing</h4>
+                    <p>Cloud infrastructure and services</p>
+                    <a href="{{ url_for('view_certificate', filename='COURSERA CLOUD COMPUTING.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Azure Virtual Machine</h4>
+                    <p>Cloud infrastructure deployment</p>
+                    <a href="{{ url_for('view_certificate', filename='Azure Create a Virtual Machine and Deploy a Web Server.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <h3>Web Development & Programming</h3>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h4>Introduction to Python</h4>
+                    <p>Python programming fundamentals</p>
+                    <a href="{{ url_for('view_certificate', filename='Introduction to Python.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Introduction to HTML</h4>
+                    <p>Web development basics</p>
+                    <a href="{{ url_for('view_certificate', filename='Introduction to HTML.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Introduction to JavaScript</h4>
+                    <p>JavaScript programming basics</p>
+                    <a href="{{ url_for('view_certificate', filename='Introduction to Javascript The Basics.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cert-category">
+            <h3>Other Certifications</h3>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h4>OPTIMA FlexSim</h4>
+                    <p>Simulation and modeling</p>
+                    <a href="{{ url_for('view_certificate', filename='OPTIMA FlexSim.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Introduction to Project Management</h4>
+                    <p>Project management fundamentals</p>
+                    <a href="{{ url_for('view_certificate', filename='Introduction to Project Management.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+                <div class="cert-card">
+                    <h4>Business Analysis & Process Management</h4>
+                    <p>Business process optimization</p>
+                    <a href="{{ url_for('view_certificate', filename='Business Analysis & Process Management.pdf') }}" target="_blank" class="btn">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">Get in Touch</h2>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="card">
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:swarnavapanda@gmail.com">swarnavapanda@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 6296401279</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Kolkata, India</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Social Links</h3>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/swarnava-panda-383376249" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/SwarnavaPanda" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linktr.ee/swarnavapanda" target="_blank" class="social-link">
+                        <i class="fas fa-link"></i>
+                        <span>Linktree</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <div class="card">
+                <h3>Send me a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn message-option" data-type="whatsapp">Send WhatsApp Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

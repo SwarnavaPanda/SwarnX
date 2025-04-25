@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <img src="https://avatars.githubusercontent.com/u/123286429?s=400&u=c83760b9bfdbc49909fa39749ddcfa47748066cd&v=4" alt="Swarnava Panda" class="profile-pic">
+        <h1>Hi, I'm Swarnava Panda</h1>
+        <p>Computer Science Engineer | AI Enthusiast | Full Stack Developer</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/swarnava-panda-383376249" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/SwarnavaPanda" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linktr.ee/swarnavapanda" target="_blank"><i class="fas fa-link"></i></a>
+        </div>
+        <a href="#about" class="btn">Explore My Journey</a>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="card">
+        <h3>Who Am I?</h3>
+        <p>I am a Computer Science Engineering student at the Institute of Engineering and Management, Kolkata, specializing in Artificial Intelligence. With a strong foundation in programming and a passion for AI and machine learning, I'm constantly exploring new technologies and building innovative solutions.</p>
+    </div>
+</section>
+
+<section id="education" class="section">
+    <h2 class="section-title">Education</h2>
+    <div class="card">
+        <h3>Institute of Engineering and Management, Kolkata</h3>
+        <p>Bachelor of Technology - CSE (AI Specialization)</p>
+        <p>CGPA: 7.25 | 2021 - 2025</p>
+    </div>
+    <div class="card">
+        <h3>Contai High School</h3>
+        <p>Senior Secondary (XII), Science</p>
+        <p>Percentage: 81 | 2020 - 2021</p>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2 class="section-title">Skills & Expertise</h2>
+    <div class="skills-grid">
+        <div class="card">
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>Python, Java, SQL, C</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Numpy, Pandas, Matplotlib</li>
+                <li>Scikit-Learn, Flask</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Tools & Platforms</h3>
+            <ul>
+                <li>Jupyter Notebooks, VS Code</li>
+                <li>Google Colab, PyCharm</li>
+                <li>GitHub Codespaces</li>
+                <li>Google Cloud Console</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects-grid">
+        <div class="card">
+            <h3>SummarEase</h3>
+            <p>YouTube Content Summarization System using Pytube, AssemblyAI API, and Llama 2 for advanced summarization algorithms.</p>
+            <a href="https://colab.research.google.com/drive/1LCrGFmvxv4VBHYfljMTLYuBzL6kHAKcr#scrollTo=c9T6boMz36bk" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="card">
+            <h3>SIGHTx</h3>
+            <p>Intelligent Image Segmentation System supporting various formats with multiple algorithms and automatic best-result identification.</p>
+            <a href="https://sightx-1.onrender.com/" target="_blank" class="btn">View Project</a>
+        </div>
+        <div class="card">
+            <h3>Indian Crime Statistics</h3>
+            <p>YouTube API-based crime news collection and categorization system with statistical dashboard.</p>
+            <a href="https://github.com/SwarnavaPanda/Indian_Crime_Monitor_Code" target="_blank" class="btn">View Project</a>
+        </div>
+    </div>
+</section>
+
+<section id="certifications" class="section">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+        <div class="card">
+            <h3>IBM Certifications</h3>
+            <ul>
+                <li>Data Analytics</li>
+                <li>AI Engineer</li>
+                <li>ML Engineer</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Coursera</h3>
+            <ul>
+                <li>Generative AI</li>
+                <li>Cloud Computing</li>
+            </ul>
+        </div>
+    </div>
+    <div class="section-footer">
+        <a href="/certificates" class="btn">More Certificates</a>
+    </div>
+</section>
+{% endblock %} 
