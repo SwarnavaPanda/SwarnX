@@ -14,12 +14,16 @@ auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 twilio_phone = os.getenv('TWILIO_PHONE')
 whatsapp_phone = os.getenv('WHATSAPP_PHONE')
 
+# Set the path for certificates directory
+CERTIFICATES_DIR = os.path.join(app.root_path, 'my_certificates')
+
 # Debug: Print environment variables (remove in production)
 print("Environment Variables Status:")
 print(f"TWILIO_ACCOUNT_SID: {'Set' if account_sid else 'Not Set'}")
 print(f"TWILIO_AUTH_TOKEN: {'Set' if auth_token else 'Not Set'}")
 print(f"TWILIO_PHONE: {'Set' if twilio_phone else 'Not Set'}")
 print(f"WHATSAPP_PHONE: {'Set' if whatsapp_phone else 'Not Set'}")
+print(f"Certificates Directory: {CERTIFICATES_DIR}")
 
 # Initialize Twilio client
 try:
@@ -49,13 +53,19 @@ def projects():
 def certificates():
     return render_template('certificates.html')
 
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
-
 @app.route('/certificates/<filename>')
 def view_certificate(filename):
-    return send_from_directory('my_certificates', filename)
+    try:
+        # Check if file exists
+        file_path = os.path.join(CERTIFICATES_DIR, filename)
+        if not os.path.exists(file_path):
+            print(f"Certificate file not found: {file_path}")
+            return "Certificate not found", 404
+            
+        return send_from_directory(CERTIFICATES_DIR, filename, as_attachment=True)
+    except Exception as e:
+        print(f"Error serving certificate: {str(e)}")
+        return str(e), 500
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
